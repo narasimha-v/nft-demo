@@ -12,10 +12,10 @@ def deploy_and_create():
         {"from": account},
     )
     fund_with_link(advanced_collectible.address)
-    creating_tx = advanced_collectible.createCollectible({"from": account})
-    creating_tx.wait(1)
+    creation_tx = advanced_collectible.createCollectible({"from": account})
+    creation_tx.wait(1)
     print("New token has been created!")
-    return advanced_collectible, creating_tx
+    return advanced_collectible, creation_tx
 
 
 def main():
