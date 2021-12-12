@@ -1,4 +1,4 @@
-from brownie import AdvancedCollectible, network  # type: ignore
+from brownie import network  # type: ignore
 from scripts.advanced_collectible.deploy_and_create import deploy_and_create
 from scripts.helpful_scripts import (
     LOCAL_BLOCKCHAIN_ENVIRONMENTS,
@@ -10,7 +10,6 @@ from scripts.helpful_scripts import (
 def test_can_create_advanced_collectible():
     if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         return
-    account = get_account()
     advanced_collectible, creation_transaction = deploy_and_create()
     requestId = creation_transaction.events["requestedCollectible"]["requestId"]
     random_number = 777
