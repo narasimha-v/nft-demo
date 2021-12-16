@@ -10,6 +10,7 @@ from brownie import (  # type: ignore
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache", "mainnet-fork"]
 OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 SAMPLE_TOKEN_URI = "https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=0-PUG.json"
+BREED_MAPPING = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
 
 contract_to_mock = {"link_token": LinkToken, "vrf_coordinator": VRFCoordinatorMock}
 
@@ -76,3 +77,7 @@ def fund_with_link(
     funding_tx.wait(1)
     print(f"Funded {contract_address}")
     return funding_tx
+
+
+def get_breed(breed_number):
+    return BREED_MAPPING[breed_number]
